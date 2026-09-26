@@ -333,36 +333,60 @@
       <input id="cf-org" name="org" type="text" autocomplete="organization">
       <label for="cf-msg">Message</label>
       <textarea id="cf-msg" name="message" rows="6" required></textarea>
-      <button type="submit" class="btn solid">Send email</button>
-      <p class="form-note" id="cf-note">Clicking send opens a pre-addressed email in your mail app so you can review and send it. You can also email <a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a> directly.</p>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit" class="btn solid">Send message</button>
+      <p class="form-note" id="cf-note">Your message goes straight to Shane. You can also email <a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a> or call 646-408-6216.</p>
     </form>
   </div>
 </section>
 
 <script>
   (function () {
+    var ENDPOINT = 'https://formsubmit.co/ajax/sneuringer@steeleharbour.com';
     var form = document.getElementById('contact-form');
     var note = document.getElementById('cf-note');
+    var btn = form.querySelector('button[type="submit"]');
+    var defaultNote = note.innerHTML;
+
+    function say(text, color) { note.textContent = text; note.style.color = color || ''; }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var f = form.elements;
       var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
       if (!name || !email || !/^\S+@\S+\.\S+$/.test(email) || !msg) {
-        note.textContent = 'Please enter your name, a valid email address and a message.';
-        note.style.color = '#b3261e';
+        say('Please enter your name, a valid email address and a message.', '#b3261e');
         return;
       }
-      var lines = [
-        msg, '',
-        '---',
-        'Name: ' + name,
-        'Email: ' + email,
-        'Phone: ' + (f.phone.value.trim() || 'n/a'),
-        'Company: ' + (f.org.value.trim() || 'n/a')
-      ];
-      window.location.href = 'mailto:sneuringer@steeleharbour.com'
-        + '?subject=' + encodeURIComponent('NYC Retail Platform inquiry from ' + name)
-        + '&body=' + encodeURIComponent(lines.join('\n'));
+      if (f._honey.value) { return; } // spam trap: real visitors never see this field
+
+      btn.disabled = true; btn.textContent = 'Sending...';
+      say('');
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: f.phone.value.trim() || 'n/a',
+          company: f.org.value.trim() || 'n/a',
+          message: msg,
+          _subject: 'NYC Retail Platform inquiry from ' + name,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        if (!res.ok || String(res.data.success) === 'false') { throw new Error(res.data.message || 'failed'); }
+        form.reset();
+        say('Thank you. Your message has been sent and Shane will be in touch.', '#1f6b3a');
+      })
+      .catch(function () {
+        note.innerHTML = 'Sorry, your message could not be sent. Please email <a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a> or call 646-408-6216.';
+        note.style.color = '#b3261e';
+      })
+      .then(function () { btn.disabled = false; btn.textContent = 'Send message'; });
     });
   })();
 </script>
