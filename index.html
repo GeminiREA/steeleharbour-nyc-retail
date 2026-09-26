@@ -115,6 +115,30 @@
   .btn { display: inline-block; padding: 14px 34px; border: 1px solid #fff; color: #fff; text-decoration: none; letter-spacing: .08em; font-size: 14px; text-transform: uppercase; }
   .btn:hover { background: #fff; color: var(--navy-deep); }
 
+  .btn.solid { background: var(--navy); border-color: var(--navy); cursor: pointer; font-family: inherit; }
+  .btn.solid:hover { background: var(--navy-deep); color: #fff; }
+
+  /* contact */
+  #contact-details { scroll-margin-top: 72px; }
+  .contact-card { border: 1px solid var(--line); background: #fff; padding: 28px 30px; margin-top: 28px; }
+  .contact-card .cname { font-family: "Playfair Display", serif; font-size: 26px; }
+  .contact-card .ctitle { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--teal); font-weight: 600; margin-bottom: 18px; }
+  .contact-card dl { margin: 0; }
+  .contact-card .row { display: grid; grid-template-columns: 80px 1fr; padding: 10px 0; border-top: 1px solid var(--line); }
+  .contact-card dt { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding-top: 3px; }
+  .contact-card dd { margin: 0; font-weight: 600; word-break: break-word; }
+  .contact-form { background: var(--bg-soft); padding: 32px 30px; }
+  .contact-form h3 { font-size: 24px; }
+  .contact-form label { display: block; font-size: 13px; letter-spacing: .04em; margin: 16px 0 6px; font-weight: 600; }
+  .contact-form .opt { font-weight: 400; color: var(--muted); }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 11px 12px; font: inherit; color: var(--ink);
+    border: 1px solid var(--line); background: #fff; border-radius: 0;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--teal); outline-offset: 0; }
+  .contact-form .btn { margin-top: 22px; }
+  .form-note { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
+
   footer { background: #0f2637; color: #a9bccb; font-size: 12px; line-height: 1.6; padding: 40px 0; }
   footer a { color: #a9bccb; }
   footer .offices { margin-bottom: 20px; color: #d5e0e8; font-size: 13px; }
@@ -278,9 +302,70 @@
   <div class="wrap">
     <h2 class="sc">Let's talk</h2>
     <p>We welcome conversations with property owners, brokers, lenders and operators, and with investors who want to learn more about the platform.</p>
-    <a class="btn" href="https://steeleharbour.com/contact/">Contact SteeleHarbour</a>
+    <a class="btn" href="#contact-details">Contact SteeleHarbour Retail</a>
   </div>
 </section>
+
+<section id="contact-details">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Contact SteeleHarbour Retail</h2>
+      <p>For property opportunities, lending and partnership inquiries, or to learn more about the platform, reach out directly.</p>
+      <div class="contact-card">
+        <div class="cname">Shane Neuringer</div>
+        <div class="ctitle">Founding Partner &amp; President</div>
+        <dl>
+          <div class="row"><dt>Email</dt><dd><a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a></dd></div>
+          <div class="row"><dt>Phone</dt><dd><a href="tel:+16464086216">646-408-6216</a></dd></div>
+        </dl>
+      </div>
+    </div>
+    <form id="contact-form" class="contact-form" novalidate>
+      <h3>Send a message</h3>
+      <label for="cf-name">Your name</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required>
+      <label for="cf-email">Your email</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required>
+      <label for="cf-phone">Phone <span class="opt">(optional)</span></label>
+      <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+      <label for="cf-org">Company <span class="opt">(optional)</span></label>
+      <input id="cf-org" name="org" type="text" autocomplete="organization">
+      <label for="cf-msg">Message</label>
+      <textarea id="cf-msg" name="message" rows="6" required></textarea>
+      <button type="submit" class="btn solid">Send email</button>
+      <p class="form-note" id="cf-note">Clicking send opens a pre-addressed email in your mail app so you can review and send it. You can also email <a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a> directly.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var note = document.getElementById('cf-note');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = form.elements;
+      var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
+      if (!name || !email || !/^\S+@\S+\.\S+$/.test(email) || !msg) {
+        note.textContent = 'Please enter your name, a valid email address and a message.';
+        note.style.color = '#b3261e';
+        return;
+      }
+      var lines = [
+        msg, '',
+        '---',
+        'Name: ' + name,
+        'Email: ' + email,
+        'Phone: ' + (f.phone.value.trim() || 'n/a'),
+        'Company: ' + (f.org.value.trim() || 'n/a')
+      ];
+      window.location.href = 'mailto:sneuringer@steeleharbour.com'
+        + '?subject=' + encodeURIComponent('NYC Retail Platform inquiry from ' + name)
+        + '&body=' + encodeURIComponent(lines.join('\n'));
+    });
+  })();
+</script>
 
 <footer>
   <div class="wrap">
