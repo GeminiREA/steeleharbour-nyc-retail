@@ -380,7 +380,7 @@
       .then(function (res) {
         if (!res.ok || String(res.data.success) === 'false') { throw new Error(res.data.message || 'failed'); }
         form.reset();
-        say('Thank you. Your message has been sent and Shane will be in touch.', '#1f6b3a');
+        say('Thank you. Your message has been sent and we\'ll be in touch.', '#1f6b3a');
       })
       .catch(function () {
         note.innerHTML = 'Sorry, your message could not be sent. Please email <a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a> or call 646-408-6216.';
