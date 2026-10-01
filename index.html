@@ -51,7 +51,7 @@
   /* hero */
   .hero {
     position: relative; color: #fff; text-align: center;
-    background: linear-gradient(rgba(22,52,74,.78), rgba(22,52,74,.78)), url("nyc-retail-hero.jpg") center/cover;
+    background: linear-gradient(rgba(22,52,74,.78), rgba(22,52,74,.78)), url("images/nyc-retail-hero.jpg") center/cover;
     padding: 110px 0 96px;
   }
   .hero h1 { font-family: "Playfair Display SC", serif; font-size: clamp(32px, 5vw, 52px); margin-bottom: .3em; }
@@ -59,7 +59,7 @@
 
   section { padding: 72px 0; }
   section.soft { background: var(--bg-soft); }
-  #overview, #team, #offices, #contact { scroll-margin-top: 72px; }
+  #overview, #team, #contact { scroll-margin-top: 72px; }
   .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--teal); font-weight: 600; margin-bottom: 14px; }
   h2 { font-size: clamp(26px, 3.2vw, 36px); }
 
@@ -96,14 +96,6 @@
   .team-card .contact div { margin-bottom: 4px; }
   @media (max-width: 860px) { .team { grid-template-columns: 1fr; } }
 
-  /* offices */
-  .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
-  .office-card { background: #fff; border: 1px solid var(--line); padding: 24px 26px; }
-  .office-card .tag { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); font-weight: 600; margin-bottom: 8px; }
-  .office-card .name { font-weight: 600; margin-bottom: 4px; }
-  .office-card .addr { color: var(--muted); font-size: 15px; }
-  @media (max-width: 760px) { .offices-grid { grid-template-columns: 1fr; } }
-
   .btn { display: inline-block; padding: 14px 34px; border: 1px solid var(--navy); background: var(--navy); color: #fff; text-decoration: none; letter-spacing: .08em; font-size: 14px; text-transform: uppercase; cursor: pointer; font-family: inherit; }
   .btn:hover { background: var(--navy-deep); border-color: var(--navy-deep); }
 
@@ -135,11 +127,10 @@
 
 <header class="site">
   <div class="wrap">
-    <a href="https://steeleharbour.com/"><img src="steeleharbour-logo.png" alt="SteeleHarbour Capital Partners"></a>
+    <a href="https://steeleharbour.com/"><img src="images/steeleharbour-logo.png" alt="SteeleHarbour Capital Partners"></a>
     <nav aria-label="Main">
       <a href="#overview">Overview</a>
       <a href="#team">Team</a>
-      <a href="#offices">Offices</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -147,8 +138,8 @@
 
 <div class="hero">
   <div class="wrap">
-    <h1>New York City Retail Investment Platform</h1>
-    <p>A programmatic platform acquiring NYC retail-focused buildings and condominiums.</p>
+    <h1>SteeleHarbour Retail</h1>
+    <p>Acquisition &amp; Financing of New York City Retail &amp; Commercial Mixed-Use Properties</p>
   </div>
 </div>
 
@@ -160,15 +151,15 @@
         <div class="row"><dt>Markets</dt><dd>New York City (Manhattan, Brooklyn, Queens focused)</dd></div>
         <div class="row"><dt>Investment Profile</dt><dd>Core+, value-add &amp; opportunistic</dd></div>
         <div class="row"><dt>Investment Size</dt><dd>$5mm&ndash;$25mm equity per investment</dd></div>
-        <div class="row"><dt>Platform Size</dt><dd>$100mm&ndash;$200mm total equity investment</dd></div>
         <div class="row"><dt>Investment Types</dt><dd>Common equity; credit/pref equity/mezz</dd></div>
-        <div class="row"><dt>Property Size</dt><dd>$10mm&ndash;$50mm per investment</dd></div>
+        <div class="row"><dt>Property Size</dt><dd>$20mm&ndash;$100mm per investment</dd></div>
       </dl>
     </div>
     <div>
       <div class="eyebrow">SteeleHarbour Overview</div>
       <h2>A privately held investment manager, founded in 2018</h2>
       <ul class="check">
+        <li>Institutional-grade asset management, underwriting, reporting and accounting resources applied to every investment</li>
         <li>Seeks superior risk-adjusted returns by investing in GP equity and structured fixed-income investments</li>
         <li>Multifamily and mixed-use focus through development and value-add; other sectors, including retail, pursued opportunistically</li>
         <li>$332mm+ of retail and mixed-use development transactions executed by the SteeleHarbour senior team, including ground-up and master-planned projects with national-credit tenants</li>
@@ -191,61 +182,25 @@
 <section class="soft" id="team">
   <div class="wrap">
     <div class="eyebrow">Executive Team</div>
-    <h2>Team contacts</h2>
+    <h2>Led by three founding partners</h2>
     <div class="team">
       <div class="team-card">
         <h3>Christopher McGrew</h3>
         <div class="role">Founding Partner &amp; Chief Executive Officer</div>
         <div class="years">30+ years of experience</div>
         <p>Oversees all company functions and strategic direction and chairs the Investment Committee. Previously President &amp; CIO of Parmenter Realty Partners, overseeing ~$5 billion of real estate; earlier at Rockrose Development, Hines and PepsiCo. Began his career as a CPA at PriceWaterhouse.</p>
-        <div class="contact">
-          <div><a href="tel:+16463733111">646.373.3111</a></div>
-          <div><a href="mailto:ccm@steeleharbour.com">ccm@steeleharbour.com</a></div>
-        </div>
       </div>
       <div class="team-card">
         <h3>Robert Franco</h3>
         <div class="role">Founding Partner &amp; Chief Financial Officer</div>
         <div class="years">30+ years of experience</div>
         <p>Oversees financial reporting, accounting policy and compliance, and is active in underwriting, due diligence and financing. Spent 15 years as a senior acquisitions executive at four leading NYC development firms, overseeing more than $1.5 billion of real estate, including $800mm+ alongside Christopher McGrew at Rockrose Development.</p>
-        <div class="contact">
-          <div><a href="tel:+19173016335">917.301.6335</a></div>
-          <div><a href="mailto:robert.franco@steeleharbour.com">robert.franco@steeleharbour.com</a></div>
-        </div>
       </div>
       <div class="team-card">
         <h3>Shane Neuringer</h3>
         <div class="role">Founding Partner &amp; President</div>
         <div class="years">25+ years of experience</div>
         <p>Founder &amp; Managing Principal of GRC Realty Partners. Involved in over $3 billion of transactions spanning acquisitions, development, financing and asset management across multifamily, condominium, office, retail and hospitality. Direct retail ownership experience as managing member of a DC-metro strip center (since 2013) and a NYC ground-floor retail condominium (since 2014). Holds an M.S. in Real Estate Investment and Development from NYU and is a licensed NYS real estate broker.</p>
-        <div class="contact">
-          <div><a href="tel:+16464086216">646.408.6216</a></div>
-          <div><a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="offices">
-  <div class="wrap">
-    <div class="eyebrow">Offices</div>
-    <h2>Corporate &amp; regional offices</h2>
-    <div class="offices-grid">
-      <div class="office-card">
-        <div class="tag">Corporate Office</div>
-        <div class="name">NYC Metro</div>
-        <div class="addr">327 Sea Cliff Ave<br>Sea Cliff, NY 11579</div>
-      </div>
-      <div class="office-card">
-        <div class="tag">Regional Office</div>
-        <div class="name">Washington, D.C.</div>
-        <div class="addr">1775 Tysons Boulevard, 5th Floor<br>Tysons, VA 22102</div>
-      </div>
-      <div class="office-card">
-        <div class="tag">Regional Office</div>
-        <div class="name">Sarasota, FL</div>
-        <div class="addr">1605 Main Street, Suite 1001<br>Sarasota, FL 34236</div>
       </div>
     </div>
   </div>
@@ -263,6 +218,7 @@
         <dl>
           <div class="row"><dt>Email</dt><dd><a href="mailto:sneuringer@steeleharbour.com">sneuringer@steeleharbour.com</a></dd></div>
           <div class="row"><dt>Phone</dt><dd><a href="tel:+16464086216">646-408-6216</a></dd></div>
+          <div class="row"><dt>Office</dt><dd>327 Sea Cliff Ave, Sea Cliff, NY 11579</dd></div>
         </dl>
       </div>
     </div>
